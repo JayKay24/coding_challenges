@@ -1,10 +1,12 @@
 function solution(N) {
-  if (typeof N === "number") { 
-    let strN = N.toString();
-    if (strN.length < 2) return 0;
-    return parseInt(strN.charAt(0)) * Math.pow(10, strN.length - 1);
-    // return parseInt(`${strN.charAt(0)}${'0'.repeat(strN.length - 1)}`);
-  }
+  // if (typeof N === "number") { 
+  //   let strN = N.toString();
+  //   if (strN.length < 2) return 0;
+  //   return parseInt(strN.charAt(0)) * Math.pow(10, strN.length - 1);
+  //   // return parseInt(`${strN.charAt(0)}${'0'.repeat(strN.length - 1)}`);
+  // }
+  if (N < 10) return 0;
+  return Math.pow(10, N.toString().length - 1);
 }
 
 console.log(solution(125));
