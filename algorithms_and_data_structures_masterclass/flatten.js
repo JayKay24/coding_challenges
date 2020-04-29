@@ -1,7 +1,20 @@
 function flatten(arr) {
-  if (arr.length === 0) return [];
-  // if (!arr[0] instanceof Array) return [arr[0]];
-  return [arr[0]].concat(flatten(arr.slice(1)));
+  let flattenedArr = [];
+
+  function flattenHelper(array) {
+    if (array.length === 0) return;
+    if (array[0] instanceof Array) {
+      flattenHelper(array[0]);
+    } else {
+      flattenedArr.push(array[0]);
+    }
+    flattenHelper(array.slice(1));
+  }
+
+  flattenHelper(arr);
+
+  return flattenedArr;
 }
 
-console.log(flatten([1, 2, 3, [4, 5]]), 'here');
+const final = flatten([[[[1], [[[2]]], [[[[[[[3]]]]]]]]]]);
+console.log(final);
