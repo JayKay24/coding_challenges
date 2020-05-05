@@ -3,14 +3,7 @@ function merge(array1, array2) {
   let i = 0;
   let j = 0;
 
-  while (true){
-    if (array1[i] === undefined) {
-      sortedArr = sortedArr.concat(array2.slice(j));
-      break;
-    } else if (array2[j] === undefined) {
-      sortedArr = sortedArr.concat(array1.slice(i));
-      break;
-    }
+  while (i < array1.length && j < array2.length){
     if (array1[i] < array2[j]) {
       sortedArr.push(array1[i]);
       i++;
@@ -18,6 +11,16 @@ function merge(array1, array2) {
       sortedArr.push(array2[j]);
       j++;
     }
+  }
+
+  while (i < array1.length) {
+    sortedArr.push(array1[i]);
+    i++;
+  }
+
+  while (j < array2.length) {
+    sortedArr.push(array2[j]);
+    j++;
   }
 
   return sortedArr;
