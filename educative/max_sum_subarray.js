@@ -17,3 +17,4 @@ const maxSubArraySum = (k, arr) => {
 
 console.log(maxSubArraySum(3, [2, 1, 5, 1, 3, 2]));
 console.log(maxSubArraySum(2, [2, 3, 4, 1, 5]));
+console.log(maxSubArraySum(1, [2, 3, 4, 1, 5]));
