@@ -55,9 +55,24 @@ class SinglyLinkedList {
 
     return removedNode;
   }
+
+  get(idx) {
+    if (this.length < 0 ) return null;
+    
+    let counter = 0;
+    let currentNode = this.head;
+
+    while (currentNode) {
+      if (counter === idx) return currentNode;
+      currentNode = currentNode.next;
+      counter++;
+    }
+
+    return null;
+  }
 }
 
 const sll = new SinglyLinkedList(5);
 sll.push(10);
 sll.push(15);
-console.log(sll.pop());
+console.log(sll.get(4));
