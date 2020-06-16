@@ -11,7 +11,9 @@ class SinglyLinkedList {
     this.tail = null;
     this.length = 0;
 
-    this.push(val);
+    if (val) {
+      this.push(val);
+    }
   }
 
   push(val) {
@@ -57,7 +59,7 @@ class SinglyLinkedList {
   }
 
   get(idx) {
-    if (this.length < 0 ) return null;
+    if (idx < 0 || idx >= this.length) return null;
     
     let counter = 0;
     let currentNode = this.head;
@@ -70,9 +72,34 @@ class SinglyLinkedList {
 
     return null;
   }
+
+  insert(idx, val) {
+    const newNode = new Node(val);
+
+    if (idx > this.length) return false;
+
+    if (idx === this.length) {
+      this.push(val);
+      return true;
+    }
+
+    const follower = this.get(idx);
+
+    if (follower) {
+      const leader = this.get(idx - 1);
+
+      newNode.next = follower;
+      leader.next = newNode;
+      this.length++;
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
 
-const sll = new SinglyLinkedList(5);
-sll.push(10);
-sll.push(15);
-console.log(sll.get(4));
+const sll = new SinglyLinkedList();
+sll.push(5).push(10).push(15).push(20);
+// sll.insert(2, 12);
+sll.get(4);
+console.log(sll.get(1));
