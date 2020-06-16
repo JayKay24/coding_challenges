@@ -96,10 +96,37 @@ class SinglyLinkedList {
       return false;
     }
   }
+
+  rotate(num) {
+    if (num >= this.length) return;
+    if (num < 0) {
+      const abs = Math.abs(num);
+
+      const numToRotate = this.length - abs;
+
+      num = numToRotate;
+    }
+
+    let counter = num;
+    let currentNode = this.head;
+
+    while (counter > 1) {
+      currentNode = currentNode.next;
+      counter--;
+    }
+
+    let follower = currentNode.next;
+    currentNode.next = null;
+    this.tail.next = this.head;
+    this.head = follower;
+    this.tail = currentNode;
+  }
 }
 
 const sll = new SinglyLinkedList();
-sll.push(5).push(10).push(15).push(20);
+sll.push(5).push(10).push(15).push(20).push(25);
 // sll.insert(2, 12);
-sll.get(4);
+// sll.get(4);
+// sll.push(1).push(2).push(3).push(4).push(5);
+sll.rotate(-1);
 console.log(sll.get(1));
