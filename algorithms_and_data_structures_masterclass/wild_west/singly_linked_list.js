@@ -121,6 +121,18 @@ class SinglyLinkedList {
     this.head = follower;
     this.tail = currentNode;
   }
+
+  set(idx, val) {
+    if (idx === this.length) return !!this.push(val);
+    const nodeAtIdx = this.get(idx);
+
+    if (nodeAtIdx) {
+      nodeAtIdx.val = val;
+      return true;
+    }
+
+    return false;
+  }
 }
 
 const sll = new SinglyLinkedList();
@@ -128,5 +140,5 @@ sll.push(5).push(10).push(15).push(20).push(25);
 // sll.insert(2, 12);
 // sll.get(4);
 // sll.push(1).push(2).push(3).push(4).push(5);
-sll.rotate(-1);
+// sll.rotate(-1);
 console.log(sll.get(1));
