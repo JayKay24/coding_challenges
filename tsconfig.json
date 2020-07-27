@@ -7,6 +7,6 @@
     "sourceMap": true
   },
   "include": [
-    "codewars/**/*.ts",
+    "**/*.ts", "algo_expert/find_three_largest_nums.js",
   ],
 }
