@@ -7,6 +7,6 @@
     "sourceMap": true
   },
   "include": [
-    "**/*.ts", "algo_expert/find_three_largest_nums.js",
+    "**/*.ts", "algo_expert/valid_subsequence.js",
   ],
 }
