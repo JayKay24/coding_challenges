@@ -7,6 +7,6 @@
     "sourceMap": true
   },
   "include": [
-    "**/*.ts", "algo_expert/valid_subsequence.js",
+    "**/*.ts",
   ],
 }
