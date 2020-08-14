@@ -7,6 +7,6 @@
     "sourceMap": true
   },
   "include": [
-    "**/*.ts",
+    "**/*.ts", "master_the_coding_interview/bst.js",
   ],
 }
