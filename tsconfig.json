@@ -7,6 +7,6 @@
     "sourceMap": true
   },
   "include": [
-    "**/*.ts", "master_the_coding_interview/bst.js", "algo_expert/depth_first_search.js",
+    "**/*.ts",
   ],
 }

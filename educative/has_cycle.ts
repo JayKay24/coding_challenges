@@ -1,4 +1,4 @@
-class SLLNode {
+export class SLLNode {
   constructor(public value: number, public next: SLLNode | null = null) {}
 }
 
