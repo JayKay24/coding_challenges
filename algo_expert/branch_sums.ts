@@ -6,13 +6,13 @@ class BinaryTree {
   ) {}
 }
 
-function branchSums(root: BinaryTree) {
+export function branchSums(root: BinaryTree) {
   const list: number[] = [];
   calculateRunningSum(root, 0, list);
   return list;
 }
 
-function calculateRunningSum(
+export function calculateRunningSum(
   node: BinaryTree,
   runningSum: number,
   list: number[]

@@ -5,29 +5,19 @@ export class BinaryTree {
   constructor(public value: number) {}
 }
 
-export function nodeDepths(root: BinaryTree) {
-  let levelCount = 0;
-  let depth = 0;
-  let currentNode = root;
-  let queue: BinaryTree[] = [];
-  queue.push(currentNode);
+export function nodeDepths(root: BinaryTree): number {
+  let collectiveSum = 0;
 
-  while (queue.length) {
-    currentNode = queue.shift();
-    let childrenCount = 0;
-    if (currentNode.left) {
-      queue.push(currentNode.left);
-      ++childrenCount;
-    }
-    if (currentNode.right) {
-      queue.push(currentNode.right);
-      ++childrenCount;
-    }
-    depth += ++levelCount * childrenCount;
+  function calculateDepthSum(node: BinaryTree, depthSum: number) {
+    if (!node) return;
 
+    calculateDepthSum(node.left, depthSum + 1);
+    collectiveSum += depthSum;
+    calculateDepthSum(node.right, depthSum + 1);
   }
 
-  return depth;
+  calculateDepthSum(root, 0);
+  return collectiveSum;
 }
 
 const binTree = new BinaryTree(1);
