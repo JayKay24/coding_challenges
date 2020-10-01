@@ -27,15 +27,16 @@ export function maxSubsetSumNoAdjacent(array: number[]) {
 
   if (array.length === 1) return array[0];
 
-  let maxSums = [...array];
-
-  maxSums[1] = Math.max(array[0], array[1]);
+  let second = array[0],
+    first = Math.max(array[1], second);
 
   for (let i = 2; i < array.length; i++) {
-    maxSums[i] = Math.max(maxSums[i - 1], array[i] + maxSums[i - 2]);
+    let current = Math.max(first, array[i] + second);
+    second = first;
+    first = current;
   }
 
-  return maxSums[maxSums.length - 1];
+  return first;
 }
 
 let res = maxSubsetSumNoAdjacent([75, 105, 120, 75, 90, 135]);
