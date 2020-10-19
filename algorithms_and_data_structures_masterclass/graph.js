@@ -44,7 +44,7 @@ class Graph {
       for (const vertex of this.adjacencyList[v]) {
         if (!visited[vertex]) helper(vertex);
       }
-    }
+    };
 
     helper(vertex);
 
@@ -56,15 +56,15 @@ class Graph {
     const results = [];
     const visited = { [vertex]: true };
     let currentVertex;
-    
-    while (queue.length > 0) {
-      results.push(queue.shift());
-      currentVertex = results[results.length - 1];
 
-      this.adjacencyList[currentVertex].forEach(v => {
-        if (!visited[v]) {
-          visited[v] = true;
-          queue.push(v);
+    while (queue.length > 0) {
+      currentVertex = queue[queue.length - 1];
+      results.push(queue.shift());
+
+      this.adjacencyList[currentVertex].forEach((neighbor) => {
+        if (!visited[neighbor]) {
+          queue.push(neighbor);
+          visited[neighbor] = true;
         }
       });
     }

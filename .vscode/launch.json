@@ -5,6 +5,12 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Javascript Debugger",
+      "program": "${file}",
+      "request": "launch",
+      "type": "node"
+    },
+    {
       "type": "node",
       "request": "launch",
       "name": "Typescript Debugger",
