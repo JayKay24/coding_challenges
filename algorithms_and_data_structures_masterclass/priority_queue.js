@@ -1,85 +1,76 @@
-class Node {
-  constructor(val, priority) {
-    this.value = val;
-    this.priority = priority;
-  }
-}
-/**
- * This is a Priority Queue implemented with a MinBinaryHeap
- */
 class PriorityQueue {
   constructor() {
     this.values = [];
   }
-
   enqueue(val, priority) {
-    const newNode = new Node(val, priority);
+    let newNode = new Node(val, priority);
     this.values.push(newNode);
-    if (this.values.length > 1) {
-      let currentIndex = this.values.length - 1;
-      try {
-        while (
-          this.values[currentIndex].priority <
-            this.values[Math.floor((currentIndex - 1) / 2)].priority &&
-          currentIndex >= 1
-        ) {
-          this.swap(
-            this.values,
-            currentIndex,
-            Math.floor((currentIndex - 1) / 2)
-          );
-          currentIndex = Math.floor((currentIndex - 1) / 2);
-        }
-      } catch (error) {
-        console.log(error);
-      }
+    this.bubbleUp();
+  }
+  bubbleUp() {
+    let idx = this.values.length - 1;
+    const element = this.values[idx];
+    while (idx > 0) {
+      let parentIdx = Math.floor((idx - 1) / 2);
+      let parent = this.values[parentIdx];
+      if (element.priority >= parent.priority) break;
+      this.values[parentIdx] = element;
+      this.values[idx] = parent;
+      idx = parentIdx;
     }
-    return this.values;
   }
-
-  swap(array, index1, index2) {
-    let temp = array[index1];
-    array[index1] = array[index2];
-    array[index2] = temp;
-  }
-
   dequeue() {
-    this.swap(this.values, 0, this.values.length - 1);
-    const oldRoot = this.values.pop();
-
-    let parentIndex = 0;
-    while (true) {
-      let leftChildIndex = 2 * parentIndex + 1;
-      let rightChildIndex = 2 * parentIndex + 2;
-      let maxPriority = null;
-      let currentIndex = null;
-      if (leftChildIndex < this.values.length) {
-        if (rightChildIndex < this.values.length) {
-          maxPriority = Math.min(
-            this.values[leftChildIndex].priority,
-            this.values[rightChildIndex].priority
-          );
-          currentIndex =
-            maxPriority === this.values[leftChildIndex]
-              ? leftChildIndex
-              : rightChildIndex;
-          this.swap(this.values, parentIndex, currentIndex);
-          parentIndex = currentIndex;
-        } else {
-          currentIndex = leftChildIndex;
-          this.swap(this.values, parentIndex, currentIndex);
-          parentIndex = currentIndex;
-        }
-      } else {
-        break;
-      }
+    const min = this.values[0];
+    const end = this.values.pop();
+    if (this.values.length > 0) {
+      this.values[0] = end;
+      this.sinkDown();
     }
-    return oldRoot;
+    return min;
+  }
+  sinkDown() {
+    let idx = 0;
+    const length = this.values.length;
+    const element = this.values[0];
+    while (true) {
+      let leftChildIdx = 2 * idx + 1;
+      let rightChildIdx = 2 * idx + 2;
+      let leftChild, rightChild;
+      let swap = null;
+
+      if (leftChildIdx < length) {
+        leftChild = this.values[leftChildIdx];
+        if (leftChild.priority < element.priority) {
+          swap = leftChildIdx;
+        }
+      }
+      if (rightChildIdx < length) {
+        rightChild = this.values[rightChildIdx];
+        if (
+          (swap === null && rightChild.priority < element.priority) ||
+          (swap !== null && rightChild.priority < leftChild.priority)
+        ) {
+          swap = rightChildIdx;
+        }
+      }
+      if (swap === null) break;
+      this.values[idx] = this.values[swap];
+      this.values[swap] = element;
+      idx = swap;
+    }
   }
 }
 
-let priorityQueue = new PriorityQueue();
-priorityQueue.enqueue("Jimmy", 3);
-priorityQueue.enqueue("Ruth", 2);
-priorityQueue.enqueue("Our Child", 1);
-console.log("");
+class Node {
+  constructor(val, priority) {
+    this.val = val;
+    this.priority = priority;
+  }
+}
+
+let ER = new PriorityQueue();
+ER.enqueue("common cold", 5);
+ER.enqueue("gunshot wound", 1);
+ER.enqueue("high fever", 4);
+ER.enqueue("broken arm", 2);
+ER.enqueue("glass in foot", 3);
