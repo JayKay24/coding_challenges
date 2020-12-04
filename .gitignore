@@ -1,2 +1,4 @@
 **/dist/
 *.code-workspace
+**/node_modules/
+**/input/

@@ -1,5 +1,7 @@
 // Find the two entries that sum to 2020; what do you get if you multiply them together?
 
+import { callWithInputReadFromFile, transformInput } from "./readInputFromFile";
+
 export const findTwoEntries = (entries: number[]) => {
   let result: number = Infinity,
     compliments = new Set(),
@@ -18,5 +20,4 @@ export const findTwoEntries = (entries: number[]) => {
   return result;
 };
 
-let res = findTwoEntries([1721, 979, 366, 299, 675, 1456]);
-console.log(res);
+callWithInputReadFromFile(findTwoEntries);

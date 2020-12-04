@@ -1,0 +1,23 @@
+{
+  "name": "coding_challenges",
+  "version": "1.0.0",
+  "description": "These are my solutions for coding challenges curated from [**codewars**](https://www.codewars.com), [**leetcode**](https://www.leetcode.com) && [**hackerrank**](https://www.hackerrank.com)",
+  "main": "substr.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JayKay24/coding_challenges.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JayKay24/coding_challenges/issues"
+  },
+  "homepage": "https://github.com/JayKay24/coding_challenges#readme",
+  "dependencies": {
+    "@types/node": "^14.14.10"
+  }
+}
