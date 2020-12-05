@@ -1,6 +1,6 @@
 // Find the two entries that sum to 2020; what do you get if you multiply them together?
 
-import { callWithInputReadFromFile, transformInput } from "./readInputFromFile";
+import { callWithInputReadFromFile } from "./readInputFromFile";
 
 export const findTwoEntries = (entries: number[]) => {
   let result: number = Infinity,
@@ -20,4 +20,4 @@ export const findTwoEntries = (entries: number[]) => {
   return result;
 };
 
-callWithInputReadFromFile(findTwoEntries);
+callWithInputReadFromFile<string>(findTwoEntries, parseInt);

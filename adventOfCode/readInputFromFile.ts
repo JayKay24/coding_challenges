@@ -2,23 +2,27 @@ const fs = require("fs");
 const path = require("path");
 const readLine = require("readline");
 
-export const callWithInputReadFromFile = (callBack: Function) => {
-  const filePath = path.join(__dirname, "..", "..", "input", "input.txt");
+const FILE_PATH = path.join(__dirname, "..", "..", "input", "input.txt");
+
+export const callWithInputReadFromFile = <T>(
+  callBack: Function,
+  transformer: Function
+): void => {
   const inputStream = readLine.createInterface({
-    input: fs.createReadStream(filePath),
+    input: fs.createReadStream(FILE_PATH),
     output: process.stdout,
     terminal: false,
   });
 
-  let arrayToBuild: string[] = [];
+  let builtFromFile: any[] = [];
 
   inputStream.on("line", (line: string) => {
-    arrayToBuild.push(line);
+    builtFromFile.push(line);
   });
 
   inputStream.on("close", () => {
-    arrayToBuild = transformInput<string>(arrayToBuild, parseInt);
-    console.log(callBack(arrayToBuild));
+    builtFromFile = transformInput<T>(builtFromFile, transformer);
+    console.log(callBack(builtFromFile));
   });
 };
 
