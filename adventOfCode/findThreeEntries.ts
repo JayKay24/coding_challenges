@@ -13,7 +13,7 @@ export const findThreeEntries = (entries: number[]) => {
       left = i + 1,
       right = entries.length - 1;
 
-    while (left < right) {
+    while (left < entries.length && right < entries.length && left < right) {
       let numbers = [current, entries[left], entries[right]];
       let sum = numbers.reduce(add, 0);
       if (sum === expectedSum) {
