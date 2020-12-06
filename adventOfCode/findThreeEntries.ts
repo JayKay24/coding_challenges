@@ -3,8 +3,8 @@ import { callWithInputReadFromFile } from "./readInputFromFile";
 export const findThreeEntries = (entries: number[]) => {
   entries.sort((a, b) => a - b);
   const expectedSum = 2020;
-  const multiplier = (accum: number, num: number) => accum * num;
-  const addition = (accum: number, num: number) => accum + num;
+  const multiply = (accum: number, num: number) => accum * num;
+  const add = (accum: number, num: number) => accum + num;
 
   let result = -Infinity;
 
@@ -15,9 +15,9 @@ export const findThreeEntries = (entries: number[]) => {
 
     while (left < right) {
       let numbers = [current, entries[left], entries[right]];
-      let sum = numbers.reduce(addition, 0);
+      let sum = numbers.reduce(add, 0);
       if (sum === expectedSum) {
-        result = numbers.reduce(multiplier, 1);
+        result = numbers.reduce(multiply, 1);
         break outer_loop;
       } else if (sum < expectedSum) {
         left++;
