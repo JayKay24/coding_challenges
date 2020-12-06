@@ -1,4 +1,4 @@
-import { callWithInputReadFromFile } from "./readInputFromFile";
+import { callWithInputReadFromFile } from "./readInputArrayFromFile";
 
 export const findThreeEntries = (entries: number[]) => {
   entries.sort((a, b) => a - b);
@@ -10,7 +10,7 @@ export const findThreeEntries = (entries: number[]) => {
 
   outer_loop: for (let i = 0; i < entries.length; i++) {
     let current = entries[i],
-      left = i,
+      left = i + 1,
       right = entries.length - 1;
 
     while (left < right) {
