@@ -6,7 +6,7 @@ const FILE_PATH = path.join(__dirname, "..", "..", "input", "input.txt");
 
 export const callWithInputReadFromFile = <T>(
   callBack: Function,
-  transformer: Function
+  transformer?: Function
 ): void => {
   const inputStream = readLine.createInterface({
     input: fs.createReadStream(FILE_PATH),
@@ -21,7 +21,9 @@ export const callWithInputReadFromFile = <T>(
   });
 
   inputStream.on("close", () => {
-    builtFromFile = transformInput<T>(builtFromFile, transformer);
+    builtFromFile = transformer
+      ? transformInput<T>(builtFromFile, transformer)
+      : builtFromFile;
     console.log(callBack(builtFromFile));
   });
 };
