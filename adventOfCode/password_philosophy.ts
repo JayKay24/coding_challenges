@@ -1,9 +1,9 @@
 import { callWithInputReadFromFile } from "./readInputArrayFromFile";
 
-export const howManyAreValid = (pwdAndPolicies: string[]) => {
+export const howManyAreValid = (pwdsAndPolicies: string[]) => {
   let validCount = 0;
 
-  outerLoop: for (const pwdAndPolicy of pwdAndPolicies) {
+  outerLoop: for (const pwdAndPolicy of pwdsAndPolicies) {
     const [range, dirtyChar, password] = pwdAndPolicy.split(" ");
     const [policyChar] = dirtyChar.split("");
     const [minStr, maxStr] = range.split("-");
