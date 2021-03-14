@@ -22,5 +22,5 @@ export const findLongestSubstring = (inputStr: string) => {
   return maxLength === -Infinity ? 1 : maxLength;
 };
 
-let res = findLongestSubstring("longestsubstring");
+let res = findLongestSubstring("dvdf");
 console.log(res);
