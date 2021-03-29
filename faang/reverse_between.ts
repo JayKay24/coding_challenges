@@ -72,8 +72,7 @@ function reverseBetween(
   }
 
   if (!prevToStart && !nodeAfterEnd) {
-    const reversedL = reverseLinkedList(head);
-    return reversedL;
+    return reverseLinkedList(head);
   }
 
   if (prevToStart) {
