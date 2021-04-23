@@ -1,11 +1,11 @@
-const directions: number[][] = [
+export const directions: number[][] = [
   [-1, 0],
   [0, 1],
   [1, 0],
   [0, -1],
 ];
 
-const dfs = (
+export const dfs = (
   matrix: number[][],
   row: number,
   col: number,
@@ -28,7 +28,7 @@ const dfs = (
   }
 };
 
-const traverseDFS = (matrix: number[][]): number[] => {
+export const traverseDFS = (matrix: number[][]): number[] => {
   let seen: boolean[][] = new Array(matrix.length).fill([]);
 
   seen = seen.map(() => new Array(matrix[0].length).fill(false));
@@ -40,7 +40,7 @@ const traverseDFS = (matrix: number[][]): number[] => {
   return values;
 };
 
-const twoDArr = [
+export const twoDArr = [
   [1, 2, 3],
   [4, 5, 6],
   [7, 8, 9],
