@@ -12,8 +12,8 @@ export const bfs = (
   seen: boolean[][],
   queue: Coords[],
   values: number[]
-): void => {
-  if (!queue.length) return;
+): number[] => {
+  if (!queue.length) return values;
 
   const [row, col] = queue.shift();
 
@@ -33,20 +33,18 @@ export const bfs = (
     }
   }
 
-  bfs(matrix, seen, queue, values);
+  return bfs(matrix, seen, queue, values);
 };
 
 export const traverseBFS = (matrix: number[][]) => {
   let seen = new Array(matrix.length).fill([]);
-  seen = seen.map(() => new Array(matrix[0].length).fill(false));
+  seen = seen.map(() => new Array(matrix [0].length).fill(false));
 
   const queue: Coords[] = [[0, 0]];
 
   const values: number[] = [];
 
-  bfs(matrix, seen, queue, values);
-
-  return values;
+  return bfs(matrix, seen, queue, values);
 };
 
 export const twoDArray = [
