@@ -24,8 +24,8 @@ export class PriorityQueue {
 
   pop() {
     this.heap.shift();
-    this.heap.unshift(this.heap.pop());
-    this.siftDown();
+    this.size() > 0 ? this.heap.unshift(this.heap.pop()) : null;
+    this.size() > 0 ? this.siftDown() : null;
     return this.size();
   }
 
