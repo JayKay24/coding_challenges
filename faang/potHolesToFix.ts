@@ -98,4 +98,5 @@ export function solution(l1: string, l2: string): number {
 // console.log(solution(".xxx...x", "..x.xxxx"));
 // console.log(solution("xxxxx", ".x..x"));
 // console.log(solution("x...x", "..x.."));
-console.log(solution("xxx..x", "...xx."));
+console.log(solution("xxx.", "...x"));
+const seen = new Set();

@@ -38,7 +38,7 @@ export const bfs = (
 
 export const traverseBFS = (matrix: number[][]) => {
   let seen = new Array(matrix.length).fill([]);
-  seen = seen.map(() => new Array(matrix [0].length).fill(false));
+  seen = seen.map(() => new Array(matrix[0].length).fill(false));
 
   const queue: Coords[] = [[0, 0]];
 
